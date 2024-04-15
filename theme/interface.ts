@@ -3,6 +3,10 @@ export enum EmotionThemeName {
     DARK = "dark",
 }
 
+export interface ExtendEmotionTheme {
+    colors: Theme
+}
+
 export type Theme = {
     white: string;
     dark_background: string;
@@ -11,8 +15,4 @@ export type Theme = {
     blue: string;
     yellow: string;
     black: string;
-}
-
-export interface ExtendEmotionTheme {
-    colors: Theme
 }
