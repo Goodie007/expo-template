@@ -1,12 +1,23 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+// import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ThemeModesProvider } from "@/providers";
-
+import { Text, TextInput } from 'react-native';
 import { useColorScheme } from "@/components/useColorScheme";
+import { loadAppFonts } from "@/utils/fonts";
+
+// @ts-ignore
+Text.defaultProps = Text.defaultProps || {};
+// @ts-ignore
+Text.defaultProps.allowFontScaling = false;
+// @ts-ignore
+TextInput.defaultProps = TextInput.defaultProps || {};
+// @ts-ignore
+TextInput.defaultProps.allowFontScaling = false;
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -22,10 +33,7 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
-  });
+  const [loaded, error] = Font.useFonts(loadAppFonts());;
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
