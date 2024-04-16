@@ -71,7 +71,7 @@ export default function RootLayout() {
         <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         <Stack.Screen name="index" options={{title: "login" }} />
       </Stack> */}
-      <Slot />
+      <Slot initialRouteName="register"/>
     </ThemeModesProvider>
   );
   }
