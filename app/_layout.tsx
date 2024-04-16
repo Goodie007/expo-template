@@ -1,15 +1,15 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 // import { useFonts } from "expo-font";
-import { Slot, Stack } from "expo-router";
+import { Slot, Stack, SplashScreen } from "expo-router";
 import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
+//import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ThemeModesProvider } from "@/providers";
-import { Text, TextInput } from 'react-native';
+import { Text, TextInput } from "react-native";
 import { useColorScheme } from "@/components/useColorScheme";
 import { loadAppFonts } from "@/utils/fonts";
-import Login from "./auth/login";
+import Login from "./(auth)/login";
 
 // @ts-ignore
 Text.defaultProps = Text.defaultProps || {};
@@ -28,14 +28,14 @@ export {
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
   //initialRouteName: "(tabs)",
-  initialRouteName: "index"
+  initialRouteName: "register",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = Font.useFonts(loadAppFonts());;
+  const [loaded, error] = Font.useFonts(loadAppFonts());
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -52,11 +52,17 @@ export default function RootLayout() {
     return null;
   }
 
-  // return <RootLayoutNav />;
+  // return (
+  //  <ThemeModesProvider>
+  //   <Slot />
+  //  </ThemeModesProvider>
+  // );
+  return <RootLayoutNav />
 
+}
 
-// function RootLayoutNav() {
-//   const colorScheme = useColorScheme();
+  function RootLayoutNav() {
+    const colorScheme = useColorScheme();
 
   return (
     <ThemeModesProvider>
@@ -68,4 +74,5 @@ export default function RootLayout() {
       <Slot />
     </ThemeModesProvider>
   );
-}
+  }
+
