@@ -28,7 +28,7 @@ export {
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
   //initialRouteName: "(tabs)",
-  initialRouteName: "register",
+  initialRouteName: "index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -52,11 +52,6 @@ export default function RootLayout() {
     return null;
   }
 
-  // return (
-  //  <ThemeModesProvider>
-  //   <Slot />
-  //  </ThemeModesProvider>
-  // );
   return <RootLayoutNav />
 
 }
@@ -66,11 +61,6 @@ export default function RootLayout() {
 
   return (
     <ThemeModesProvider>
-      {/* <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-        <Stack.Screen name="index" options={{title: "login" }} />
-      </Stack> */}
       <Slot initialRouteName="register"/>
     </ThemeModesProvider>
   );
